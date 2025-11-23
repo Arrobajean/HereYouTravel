@@ -17,6 +17,10 @@ const Footer = () => {
                   src="/logo/logo-heryoutravel.webp"
                   alt="hereyoutravel.com"
                   className="h-auto max-w-[200px]"
+                  width={200}
+                  height={56}
+                  loading="lazy"
+                  decoding="async"
                 />
               </Link>
             </div>

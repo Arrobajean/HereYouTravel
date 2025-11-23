@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { BookOpen } from "lucide-react";
+import { blogPosts } from "@/data/landing/blog";
+import SectionIcon from "@/components/ui/section-icon";
 
 // SVG Placeholder para imágenes de blog
 const BlogImagePlaceholder = ({ destination }: { destination: string }) => (
@@ -39,18 +42,31 @@ const BlogCard = ({
   destination,
   title,
   description,
-  imagePlaceholder,
+  image,
 }: {
   destination: string;
   title: string;
   description: string;
-  imagePlaceholder: React.ReactNode;
+  image?: string;
 }) => {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
       {/* Imagen - Parte superior redondeada */}
       <div className="w-full h-64 overflow-hidden">
-        {imagePlaceholder}
+        {image ? (
+          <img
+            src={image}
+            alt={destination}
+            className="w-full h-full object-cover"
+            width={400}
+            height={250}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+          />
+        ) : (
+          <BlogImagePlaceholder destination={destination} />
+        )}
       </div>
 
       {/* Contenido - Parte inferior */}
@@ -78,35 +94,17 @@ const BlogCard = ({
 };
 
 const BlogSection = () => {
-  const blogPosts = [
-    {
-      destination: "Dubái",
-      title: "Los 10 mejores tours en Dubái",
-      description:
-        "Descubre los 10 mejores tours en Dubái que no pueden faltar en tu viaje con experiencias únicas, seguras y altamente recomendadas por viajeros.",
-    },
-    {
-      destination: "Miami",
-      title: "Los 10 mejores tours en Miami",
-      description:
-        "Descubre los 10 mejores tours en Miami que no pueden faltar en tu viaje con experiencias únicas, seguras y altamente recomendadas por viajeros.",
-    },
-    {
-      destination: "Turquía",
-      title: "Los 10 mejores tours en Turquía",
-      description:
-        "Descubre los 10 mejores tours en Turquía que no pueden faltar en tu viaje con experiencias únicas, seguras y altamente recomendadas por viajeros.",
-    },
-  ];
-
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y subtítulo */}
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-montserrat">
-            Inspiración y tips para tus viajes
-          </h2>
+          <div className="flex items-center justify-center gap-6 mb-6 w-full px-4 py-2 overflow-visible">
+            <SectionIcon icon={BookOpen} />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat whitespace-nowrap">
+              Tips para tus viajes
+            </h2>
+          </div>
 
           {/* Línea decorativa con puntos */}
           <div className="flex items-center justify-center gap-2 mb-8">
@@ -132,9 +130,7 @@ const BlogSection = () => {
               destination={post.destination}
               title={post.title}
               description={post.description}
-              imagePlaceholder={
-                <BlogImagePlaceholder destination={post.destination} />
-              }
+              image={post.image}
             />
           ))}
         </div>
@@ -144,4 +140,3 @@ const BlogSection = () => {
 };
 
 export default BlogSection;
-

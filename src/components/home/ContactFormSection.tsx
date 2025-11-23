@@ -1,37 +1,19 @@
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useContactForm } from "@/hooks/landing/useContactForm";
 import CTAButton from "@/components/ui/cta-button";
 
 const ContactFormSection = () => {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    telefono: "",
-    email: "",
-    mensaje: "",
-    privacidad: false,
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar el formulario
-    console.log("Formulario enviado:", formData);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, privacidad: e.target.checked }));
-  };
+  const {
+    formData,
+    handleChange,
+    handleCheckboxChange,
+    handleSubmit,
+  } = useContactForm();
 
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      {/* Background - El usuario lo agregará después */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-indigo-100">
         {/* Placeholder para el background que el usuario agregará */}
       </div>
@@ -174,4 +156,3 @@ const ContactFormSection = () => {
 };
 
 export default ContactFormSection;
-

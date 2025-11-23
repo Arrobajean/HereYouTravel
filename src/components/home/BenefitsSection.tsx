@@ -1,5 +1,8 @@
-import { Check, Play, ArrowRight } from "lucide-react";
+import { Check, Award, ArrowRight } from "lucide-react";
+import { useInView } from "@/hooks/landing/useInView";
+import { benefits } from "@/data/landing/benefits";
 import CTAButton from "@/components/ui/cta-button";
+import SectionIcon from "@/components/ui/section-icon";
 
 // SVG Placeholder para la imagen/video
 const VideoImagePlaceholder = () => (
@@ -36,42 +39,24 @@ const VideoImagePlaceholder = () => (
 );
 
 const BenefitsSection = () => {
-  const benefits = [
-    {
-      title: "Vuelos a tu medida",
-      description:
-        "Encontramos los mejores vuelos para ti, con excelente precio y horarios convenientes.",
-    },
-    {
-      title: "Tours personalizados",
-      description:
-        "Creamos experiencias únicas, adaptadas a tus gustos, sueños y forma de viajar.",
-    },
-    {
-      title: "Guías locales expertos",
-      description:
-        "Descubre la historia y cultura con guías profesionales para una experiencia auténtica.",
-    },
-    {
-      title: "Transporte confortable",
-      description:
-        "Disfruta el camino en vehículos modernos, seguros y con comodidades ideales.",
-    },
-    {
-      title: "Alojamiento de calidad",
-      description:
-        "Descansa en hoteles y resorts exclusivos, elegidos para tu máximo confort.",
-    },
-  ];
+  const [sectionRef, sectionInView] = useInView(0.2);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y descripción */}
-        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-montserrat">
-            Beneficios de nuestra agencia
-          </h2>
+        <div
+          className={`text-center max-w-3xl mx-auto mb-12 lg:mb-16 transition-all ${
+            sectionInView ? "animate-fade-in-down opacity-100" : "opacity-0"
+          }`}
+          style={{ animationDelay: "0ms" }}
+        >
+          <div className="flex items-center justify-center gap-6 mb-6 w-full px-4 py-2 overflow-visible">
+            <SectionIcon icon={Award} />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat whitespace-nowrap">
+              Beneficios de nuestra agencia
+            </h2>
+          </div>
 
           {/* Línea decorativa con puntos */}
           <div className="flex items-center justify-center gap-2 mb-8">
@@ -90,35 +75,68 @@ const BenefitsSection = () => {
         </div>
 
         {/* Layout de dos columnas */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-          {/* Columna izquierda - Imagen/Video */}
-          <div className="relative">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 perspective-container"
+          style={{ perspective: "1200px" }}
+        >
+          {/* Columna izquierda - Imagen */}
+          <div
+            className={`relative transition-all ${
+              sectionInView ? "animate-fade-in-right opacity-100" : "opacity-0"
+            }`}
+            style={{ animationDelay: "0ms" }}
+          >
             <div className="w-full h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
-              <VideoImagePlaceholder />
-            </div>
-            {/* Botón de play centrado */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button
-                className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
-                aria-label="Reproducir video"
-              >
-                <Play className="w-10 h-10 text-red-600 ml-1" fill="currentColor" />
-              </button>
+              <img
+                src="/assets/landing/agencia-de-viajes-en-miami.webp"
+                alt="Agencia de viajes en Miami"
+                className="w-full h-full object-cover"
+                width={800}
+                height={500}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+              />
             </div>
           </div>
 
           {/* Columna derecha - Lista de beneficios */}
           <div className="flex flex-col justify-center space-y-6">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex gap-4">
+              <div
+                key={index}
+                className={`flex gap-4 transition-all group ${
+                  sectionInView
+                    ? "animate-fade-in-left opacity-100"
+                    : "opacity-0"
+                }`}
+                style={{ animationDelay: `${400 + index * 200}ms` }}
+              >
                 {/* Checkmark rojo */}
-                <div className="flex-shrink-0 mt-1">
-                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
+                <div
+                  className={`flex-shrink-0 mt-1 ${
+                    sectionInView ? "animate-fade-in-scale" : ""
+                  }`}
+                  style={{
+                    animationDelay: `${400 + index * 200}ms`,
+                  }}
+                >
+                  <div
+                    className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                    style={{ transitionDuration: "var(--timing-fast)" }}
+                  >
                     <Check className="w-4 h-4 text-white" />
                   </div>
                 </div>
                 {/* Contenido */}
-                <div className="flex-1">
+                <div
+                  className={`flex-1 ${
+                    sectionInView ? "animate-fade-in-right" : ""
+                  }`}
+                  style={{
+                    animationDelay: `${500 + index * 200}ms`,
+                  }}
+                >
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 font-montserrat">
                     {benefit.title}
                   </h3>
@@ -141,4 +159,3 @@ const BenefitsSection = () => {
 };
 
 export default BenefitsSection;
-

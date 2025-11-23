@@ -29,11 +29,14 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <div className="min-h-screen pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           {/* Formulario */}
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg"
+          >
             {/* Campo Nombre completo */}
             <div className="mb-6">
               <label
@@ -163,5 +166,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-

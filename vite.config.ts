@@ -25,5 +25,29 @@ export default defineConfig(({ mode }) => ({
       target: "es2020",
     },
   },
+  build: {
+    target: "es2020",
+    minify: "esbuild",
+    cssMinify: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separar vendor chunks para mejor caching
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "ui-vendor": [
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-toast",
+          ],
+          "animation-vendor": ["framer-motion", "gsap"],
+          "query-vendor": ["@tanstack/react-query"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 }));
 

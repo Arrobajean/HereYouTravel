@@ -1,4 +1,4 @@
-import { useEffect, memo, useMemo } from "react";
+import { useEffect, memo, useMemo, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,19 +8,22 @@ import {
   RouterProvider,
   Outlet,
 } from "react-router-dom";
-import Home from "@/pages/site/home/pages/Home";
-import AboutUs from "@/pages/site/about/pages/AboutUs";
-import Destinations from "@/pages/site/destinations/pages/Destinations";
-import Packages from "@/pages/site/packages/pages/Packages";
-import Contact from "@/pages/site/contact/pages/Contact";
-import LegalNotice from "./pages/legal/LegalNotice";
-import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
-import CookiesPolicy from "./pages/legal/CookiesPolicy";
-import NotFound from "@/pages/site/not-found/pages/NotFound";
 import CookieConsent from "./components/layout/CookieConsent";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 import useScrollToTop from "./hooks/useScrollToTop";
+
+// Lazy load de páginas para code splitting
+const Home = lazy(() => import("@/pages/site/home/pages/Home"));
+const AboutUs = lazy(() => import("@/pages/site/about/pages/AboutUs"));
+const Destinations = lazy(() => import("@/pages/site/destinations/pages/Destinations"));
+const DestinationDetail = lazy(() => import("@/pages/site/destinations/pages/DestinationDetail"));
+const Packages = lazy(() => import("@/pages/site/packages/pages/Packages"));
+const Contact = lazy(() => import("@/pages/site/contact/pages/Contact"));
+const LegalNotice = lazy(() => import("./pages/legal/LegalNotice"));
+const PrivacyPolicy = lazy(() => import("./pages/legal/PrivacyPolicy"));
+const CookiesPolicy = lazy(() => import("./pages/legal/CookiesPolicy"));
+const NotFound = lazy(() => import("@/pages/site/not-found/pages/NotFound"));
 
 // Componentes memoizados con comparación personalizada para evitar re-renders
 const MemoizedNavigation = memo(Navigation, () => true);
@@ -29,12 +32,21 @@ const MemoizedCookieConsent = memo(CookieConsent, () => true);
 
 const queryClient = new QueryClient();
 
+// Componente de loading para Suspense
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+  </div>
+);
+
 // Componente para el contenido que cambia (usa el hook de scroll)
 const PageContent = () => {
   useScrollToTop();
   return (
     <main id="main-content">
-      <Outlet />
+      <Suspense fallback={<PageLoader />}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
@@ -73,6 +85,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "nosotros", element: <AboutUs /> },
       { path: "destinos", element: <Destinations /> },
+      { path: "destinos/:slug", element: <DestinationDetail /> },
       { path: "paquetes", element: <Packages /> },
       { path: "contacto", element: <Contact /> },
       { path: "aviso-legal", element: <LegalNotice /> },

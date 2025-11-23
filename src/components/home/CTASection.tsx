@@ -1,10 +1,17 @@
 import { Send } from "lucide-react";
+import { useInView } from "@/hooks/landing/useInView";
 import CTAButton from "@/components/ui/cta-button";
+import SectionIcon from "@/components/ui/section-icon";
 
 const CTASection = () => {
+  const [sectionRef, sectionInView] = useInView(0.3);
+
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      {/* Background - El usuario lo agregará después */}
+    <section
+      ref={sectionRef}
+      className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
+    >
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-blue-300 to-indigo-300">
         {/* Placeholder para el background que el usuario agregará */}
       </div>
@@ -15,28 +22,46 @@ const CTASection = () => {
       {/* Contenido centrado */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Icono de avión de papel */}
-          <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-              <Send className="w-8 h-8 text-gray-900" />
-            </div>
+          {/* Icono y título */}
+          <div
+            className={`flex items-center justify-center gap-6 mb-6 w-full px-4 py-2 overflow-visible transition-all ${
+              sectionInView ? "animate-fade-in-up opacity-100" : "opacity-0"
+            }`}
+            style={{ animationDelay: "300ms" }}
+          >
+            <SectionIcon
+              icon={Send}
+              className="bg-white shadow-lg"
+              iconClassName="text-gray-900"
+            />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-montserrat whitespace-nowrap">
+              ¿Listo para tu próxima aventura?
+            </h2>
           </div>
 
-          {/* Título */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 font-montserrat">
-            ¿Listo para tu próxima aventura?
-          </h2>
-
           {/* Descripción */}
-          <p className="text-base sm:text-lg text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto">
-            Habla con nuestros expertos en viajes y recibe atención personalizada
-            para planear las vacaciones ideales en el destino de tus sueños.
+          <p
+            className={`text-base sm:text-lg text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto transition-all ${
+              sectionInView ? "animate-fade-in-up opacity-100" : "opacity-0"
+            }`}
+            style={{ animationDelay: "500ms" }}
+          >
+            Habla con nuestros expertos en viajes y recibe atención
+            personalizada para planear las vacaciones ideales en el destino de
+            tus sueños.
           </p>
 
           {/* Botón CTA */}
-          <CTAButton to="/contacto" showArrow uppercase>
-            RESERVA TU VIAJE
-          </CTAButton>
+          <div
+            className={`transition-all ${
+              sectionInView ? "animate-fade-in-up opacity-100" : "opacity-0"
+            }`}
+            style={{ animationDelay: "700ms" }}
+          >
+            <CTAButton to="/contacto" showArrow uppercase>
+              RESERVA TU VIAJE
+            </CTAButton>
+          </div>
         </div>
       </div>
     </section>
@@ -44,4 +69,3 @@ const CTASection = () => {
 };
 
 export default CTASection;
-
