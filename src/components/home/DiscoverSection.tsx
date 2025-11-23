@@ -64,7 +64,7 @@ const StatItem = ({ value, label, prefix = "+" }: Stat) => {
   return (
     <div ref={ref} className="text-center relative">
       <div
-        className="text-5xl sm:text-6xl font-bold text-red-600 mb-2 transition-all relative"
+        className="text-2xl sm:text-5xl lg:text-6xl font-bold text-red-600 mb-1 sm:mb-2 transition-all relative"
         style={{
           transitionDuration: "var(--timing-normal)",
           transitionTimingFunction: "var(--ease-out)",
@@ -79,7 +79,7 @@ const StatItem = ({ value, label, prefix = "+" }: Stat) => {
         )}
       </div>
       <div
-        className="text-lg sm:text-xl text-gray-800 font-medium transition-all"
+        className="text-xs sm:text-lg lg:text-xl text-gray-800 font-medium transition-all leading-tight sm:leading-normal"
         style={{
           transitionDuration: "var(--timing-normal)",
           transitionTimingFunction: "var(--ease-out)",
@@ -164,7 +164,7 @@ const DiscoverSection = () => {
         {/* Estadísticas */}
         <div
           ref={statsRef}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-8 border-t border-gray-200"
+          className="grid grid-cols-3 gap-2 sm:gap-8 lg:gap-12 pt-6 sm:pt-8 border-t border-gray-200"
         >
           {stats.map((stat, index) => (
             <div

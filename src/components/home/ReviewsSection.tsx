@@ -122,14 +122,14 @@ const ReviewsSection = () => {
         {/* Layout de dos columnas */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative">
           {/* Columna izquierda - Tarjeta de resumen */}
-          <div className="bg-red-600 rounded-2xl p-8 shadow-lg h-fit">
-            <div className="flex items-center gap-6">
-              {/* Logo grande a la izquierda */}
+          <div className="bg-red-600 rounded-2xl p-4 sm:p-8 shadow-lg h-fit">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+              {/* Logo más pequeño en móvil */}
               <div className="flex-shrink-0">
                 <img
                   src="/logo/logo-heryoutravel.webp"
                   alt="Here You Travel"
-                  className="h-24 w-auto object-contain"
+                  className="h-12 sm:h-20 lg:h-24 w-auto object-contain"
                   width={250}
                   height={70}
                   loading="lazy"
@@ -137,26 +137,26 @@ const ReviewsSection = () => {
                 />
               </div>
 
-              {/* Contenido a la derecha */}
-              <div className="flex-1">
+              {/* Contenido */}
+              <div className="flex-1 w-full sm:w-auto">
                 {/* Calificación */}
-                <div className="mb-4">
-                  <div className="flex gap-1 mb-2 justify-center">
+                <div className="mb-3 sm:mb-4">
+                  <div className="flex gap-1 mb-1.5 sm:mb-2 justify-center">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400"
                       />
                     ))}
                   </div>
-                  <p className="text-white text-sm text-center">
+                  <p className="text-white text-xs sm:text-sm text-center">
                     88 reseñas Google
                   </p>
                 </div>
 
                 {/* Botón */}
                 <div className="flex justify-center">
-                  <button className="bg-white border-2 border-white text-red-600 font-semibold py-2.5 px-5 rounded-xl hover:bg-gray-100 transition-colors duration-200 text-sm">
+                  <button className="bg-white border-2 border-white text-red-600 font-semibold py-2 px-4 sm:py-2.5 sm:px-5 rounded-xl hover:bg-gray-100 transition-colors duration-200 text-xs sm:text-sm">
                     Escribe una reseña
                   </button>
                 </div>
