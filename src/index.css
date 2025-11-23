@@ -1124,3 +1124,65 @@ a[role="button"] *,
     margin: 0 0 1rem 0 !important;
   }
 }
+
+/* Estilos Apple-style para selectores glass transparentes */
+@layer components {
+  /* Selector glass estilo Apple */
+  .glass-select {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+  }
+
+  .glass-select:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .glass-select:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.4) !important;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Estilizar las opciones del dropdown con efecto glass */
+  .glass-select option {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    color: #ffffff !important;
+    padding: 8px 12px;
+  }
+
+  .glass-select option:hover,
+  .glass-select option:checked {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+}
+
+/* Estilos globales para selectores nativos con efecto glass */
+select.glass-select {
+  color-scheme: dark;
+}
+
+/* Estilizar el dropdown nativo del navegador */
+select.glass-select::-ms-expand {
+  display: none;
+}
+
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+select.glass-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Estilos para el dropdown cuando está abierto (solo funciona parcialmente en navegadores modernos) */
+select.glass-select:focus option {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}

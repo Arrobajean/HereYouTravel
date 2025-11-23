@@ -303,87 +303,87 @@ const Home = () => {
               }`}
               style={{ animationDelay: "800ms" }}
             >
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-2xl">
-                <form className="space-y-3 sm:space-y-4">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl max-w-md mx-auto lg:mx-0">
+                <form className="space-y-2.5 sm:space-y-3">
                   {/* Campo Destinos */}
-                  <div className="relative">
-                    <MapPin className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
-                    <select className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all">
-                      <option className="bg-gray-800 text-white">
+                  <div className="relative group">
+                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 group-hover:text-white/90 transition-colors pointer-events-none z-10" />
+                    <select className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all">
+                      <option value="" className="text-white">
                         Destinos
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="paris" className="text-white">
                         París, Francia
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="tokio" className="text-white">
                         Tokio, Japón
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="nueva-york" className="text-white">
                         Nueva York, USA
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="barcelona" className="text-white">
                         Barcelona, España
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="bali" className="text-white">
                         Bali, Indonesia
                       </option>
                     </select>
-                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none group-hover:text-white/90 transition-colors" />
                   </div>
 
                   {/* Campo Precio */}
-                  <div className="relative">
-                    <DollarSign className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
-                    <select className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all">
-                      <option className="bg-gray-800 text-white">
+                  <div className="relative group">
+                    <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 group-hover:text-white/90 transition-colors pointer-events-none z-10" />
+                    <select className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all">
+                      <option value="" className="text-white">
                         $800 - $4,899
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="500-1000" className="text-white">
                         $500 - $1,000
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="1000-2500" className="text-white">
                         $1,000 - $2,500
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="2500-5000" className="text-white">
                         $2,500 - $5,000
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="5000+" className="text-white">
                         $5,000+
                       </option>
                     </select>
-                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none group-hover:text-white/90 transition-colors" />
                   </div>
 
                   {/* Campo Duración */}
-                  <div className="relative">
-                    <Clock className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
-                    <select className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all">
-                      <option className="bg-gray-800 text-white">
+                  <div className="relative group">
+                    <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 group-hover:text-white/90 transition-colors pointer-events-none z-10" />
+                    <select className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all">
+                      <option value="" className="text-white">
                         0 Días - 15 Días
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="1-3" className="text-white">
                         1-3 Días
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="4-7" className="text-white">
                         4-7 Días
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="8-15" className="text-white">
                         8-15 Días
                       </option>
-                      <option className="bg-gray-800 text-white">
+                      <option value="16+" className="text-white">
                         16+ Días
                       </option>
                     </select>
-                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none group-hover:text-white/90 transition-colors" />
                   </div>
 
                   {/* Botón Buscar */}
                   <button
                     type="submit"
-                    className="w-full bg-red-600/90 backdrop-blur-sm hover:bg-red-700 text-white font-semibold py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base border border-red-500/30 hover:border-red-400/50"
+                    className="w-full bg-red-600/90 backdrop-blur-sm hover:bg-red-700 active:scale-[0.98] text-white font-semibold py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg text-sm border border-red-500/30 hover:border-red-400/50 mt-3"
                   >
-                    <Search className="w-4 h-4 sm:w-5 sm:h-5" />
-                    Buscar
+                    <Search className="w-4 h-4" />
+                    Buscar Destino
                   </button>
                 </form>
               </div>
