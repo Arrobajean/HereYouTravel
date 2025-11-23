@@ -11,9 +11,9 @@ const FAQSection = () => {
         <div className="max-w-4xl mx-auto">
           {/* Icono y título */}
           <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6 w-full px-4 py-2 overflow-visible">
+            <div className="flex flex-col items-center justify-center gap-4 mb-6 w-full px-4 py-2 overflow-visible">
               <SectionIcon icon={HelpCircle} />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat sm:whitespace-nowrap text-center sm:text-left">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat sm:whitespace-nowrap text-center">
                 Resolvemos tus dudas
               </h2>
             </div>

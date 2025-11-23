@@ -51,9 +51,9 @@ const BenefitsSection = () => {
           }`}
           style={{ animationDelay: "0ms" }}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6 w-full px-4 py-2 overflow-visible">
+          <div className="flex flex-col items-center justify-center gap-4 mb-6 w-full px-4 py-2 overflow-visible">
             <SectionIcon icon={Award} />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat text-center sm:text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat sm:whitespace-nowrap text-center">
               Beneficios de nuestra agencia
             </h2>
           </div>

@@ -88,7 +88,13 @@ const Navigation = () => {
           <div className="flex items-center justify-between pt-6 pb-4 w-full">
             {/* Logo */}
             <div className="flex justify-center sm:justify-start flex-1 lg:flex-initial">
-              <Link to="/" className="flex items-center">
+              <Link
+                to="/"
+                className="flex items-center"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
                 <img
                   src="/logo/logo-heryoutravel.webp"
                   alt="Here You Travel"

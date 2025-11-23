@@ -12,7 +12,12 @@ const Footer = () => {
           <div className="space-y-4 sm:space-y-6">
             {/* Logo */}
             <div className="flex items-center justify-center sm:justify-start">
-              <Link to="/">
+              <Link
+                to="/"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
                 <img
                   src="/logo/logo-heryoutravel.webp"
                   alt="hereyoutravel.com"
@@ -78,14 +83,14 @@ const Footer = () => {
 
           {/* Columna 2: Explorar */}
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 font-montserrat">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 font-montserrat text-center sm:text-left">
               Explorar
             </h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-2 sm:gap-y-3 sm:space-y-0">
               <li>
                 <Link
                   to="/experiencias"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Experiencias
                 </Link>
@@ -93,7 +98,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/destinos"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Destinos
                 </Link>
@@ -101,7 +106,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contacto"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Contacto
                 </Link>
@@ -109,7 +114,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/nosotros"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Nosotros
                 </Link>
@@ -119,14 +124,14 @@ const Footer = () => {
 
           {/* Columna 3: Importante */}
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 font-montserrat">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 font-montserrat text-center sm:text-left">
               Importante
             </h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-2 sm:gap-y-3 sm:space-y-0">
               <li>
                 <Link
                   to="/blog"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Blog viajero
                 </Link>
@@ -134,7 +139,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/experiencias/reunificacion-familiar"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Reunificación familiar
                 </Link>
@@ -142,7 +147,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/politica-privacidad"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Política de privacidad
                 </Link>
@@ -150,7 +155,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/aviso-legal"
-                  className="text-sm text-white/90 hover:text-white transition-colors"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
                 >
                   Términos y condiciones
                 </Link>
@@ -160,83 +165,75 @@ const Footer = () => {
 
           {/* Columna 4: Destinos */}
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 font-montserrat">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 font-montserrat text-center sm:text-left">
               Destinos
             </h3>
-            <div className="grid grid-cols-2 gap-x-3 sm:gap-x-4 gap-y-3">
-              <div>
-                <ul className="space-y-3">
-                  <li>
-                    <Link
-                      to="/destinos/punta-cana"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Punta Cana
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/turquia"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Turquía
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/tailandia"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Tailandia
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/peru"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Perú
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul className="space-y-3">
-                  <li>
-                    <Link
-                      to="/destinos/marruecos"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Marruecos
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/japon"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Japón
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/egipto"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Egipto
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/dubai"
-                      className="text-sm text-white/90 hover:text-white transition-colors"
-                    >
-                      Dubai
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ul className="grid grid-cols-2 sm:grid-cols-2 gap-x-3 sm:gap-x-4 gap-y-2 sm:gap-y-3">
+              <li>
+                <Link
+                  to="/destinos/punta-cana"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Punta Cana
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/turquia"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Turquía
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/tailandia"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Tailandia
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/peru"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Perú
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/marruecos"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Marruecos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/japon"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Japón
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/egipto"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Egipto
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destinos/dubai"
+                  className="text-sm text-white/90 hover:text-white transition-all hover:scale-110 block text-center sm:text-left"
+                >
+                  Dubai
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Columna 5: Pago seguro */}

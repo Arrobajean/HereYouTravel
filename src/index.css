@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lenis smooth scroll styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+
 /* Custom animations for Liquid Glass Button */
 @keyframes liquid-glow {
 
@@ -55,9 +78,9 @@
 
 @layer base {
   :root {
-    /* Fondo general más suave - Cararra */
-    --background: 30 14% 96%;
-    /* #F5F4F2 - Cararra */
+    /* Fondo general más suave - White Rock */
+    --background: 28 29% 90%;
+    /* #EDE5DE - White Rock */
     --foreground: 0 0% 0%;
 
     --card: 45 15% 94%;
@@ -154,16 +177,16 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Merriweather", serif !important;
-    background-color: #F5F4F2 !important;
+    background-color: #EDE5DE !important;
     font-display: swap;
   }
 
   html {
-    background-color: #F5F4F2 !important;
+    background-color: #EDE5DE !important;
   }
 
   #root {
-    background-color: #F5F4F2 !important;
+    background-color: #EDE5DE !important;
     overflow-x: hidden;
     max-width: 100vw;
     width: 100%;
@@ -171,14 +194,14 @@
   }
 
   .min-h-screen {
-    background-color: #F5F4F2 !important;
+    background-color: #EDE5DE !important;
   }
 
-  /* Forzar el color de fondo Cararra en todos los elementos principales */
+  /* Forzar el color de fondo White Rock en todos los elementos principales */
   main,
   section,
   div[class*="section"] {
-    background-color: #F5F4F2 !important;
+    background-color: #EDE5DE !important;
   }
 
   /* Configuración de fuentes para diferentes elementos */
@@ -195,7 +218,7 @@
   span,
   div,
   li {
-    font-family: "Merriweather", serif !important;
+    font-family: "Roboto", sans-serif !important;
   }
 
   button,
@@ -211,7 +234,7 @@
   .font-medium button,
   .font-semibold button,
   .font-bold button {
-    font-family: "Montserrat", sans-serif !important;
+    font-family: "Roboto", sans-serif !important;
   }
 }
 
@@ -220,7 +243,7 @@
   /* Glass effect utilities */
   .glass {
     @apply backdrop-blur-md border border-white/20;
-    background-color: rgba(245, 244, 242, 0.8) !important;
+    background-color: rgba(237, 229, 222, 0.8) !important;
   }
 
   .glass-dark {
@@ -229,12 +252,12 @@
 
   .glass-card {
     @apply backdrop-blur-lg border border-white/20 shadow-lg;
-    background-color: rgba(245, 244, 242, 0.6) !important;
+    background-color: rgba(237, 229, 222, 0.6) !important;
   }
 
   .glass-nav {
     @apply backdrop-blur-xl border-b border-white/20;
-    background-color: rgba(245, 244, 242, 0.9) !important;
+    background-color: rgba(237, 229, 222, 0.9) !important;
   }
 
   .glass-nav-dark {
@@ -410,7 +433,7 @@
 
   .glass-footer {
     @apply backdrop-blur-sm border-t border-white/20;
-    background-color: rgba(245, 244, 242, 0.4) !important;
+    background-color: rgba(237, 229, 222, 0.4) !important;
   }
 
 
@@ -538,7 +561,7 @@
     transition-duration: 0.1s;
   }
 
-  /* Glass button para fondo Cararra - efecto sutil y elegante */
+  /* Glass button para fondo White Rock - efecto sutil y elegante */
   .glass-button-cararra {
     @apply transition-all duration-300 font-medium;
     background: linear-gradient(135deg,
@@ -1033,7 +1056,7 @@
   }
 }
 
-/* Forzar Montserrat en todos los botones - Máxima prioridad */
+/* Forzar Roboto en todos los botones - Máxima prioridad */
 button,
 a[role="button"],
 [role="button"],
@@ -1041,7 +1064,7 @@ a[role="button"],
 button *,
 a[role="button"] *,
 [role="button"] * {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 /* Animaciones para el menú hamburguesa */

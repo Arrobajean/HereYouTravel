@@ -12,6 +12,7 @@ import CookieConsent from "./components/layout/CookieConsent";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 import useScrollToTop from "./hooks/useScrollToTop";
+import { useLenis } from "./hooks/useLenis";
 
 // Lazy load de páginas para code splitting
 const Home = lazy(() => import("@/pages/site/home/pages/Home"));
@@ -55,6 +56,9 @@ const PageContent = () => {
 // Nota: Este componente se re-renderiza cuando cambia la ruta (necesario para Outlet)
 // pero Navigation y Footer están memoizados y no se re-renderizan
 const RootLayout = () => {
+  // Inicializar Lenis smooth scroll solo en escritorio
+  useLenis();
+
   // Asegurar que el navegador no restaure scroll automáticamente entre páginas
   useEffect(() => {
     if ("scrollRestoration" in window.history) {

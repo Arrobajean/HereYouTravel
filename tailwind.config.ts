@@ -25,6 +25,7 @@ export default {
         inter: ["Inter", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -71,9 +72,10 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         offwhite: {
-          DEFAULT: "#F5F4F2",
-          light: "#F5F4F2",
-          cararra: "#F5F4F2",
+          DEFAULT: "#EDE5DE",
+          light: "#EDE5DE",
+          cararra: "#EDE5DE",
+          "white-rock": "#EDE5DE",
         },
       },
       backdropBlur: {
