@@ -99,9 +99,9 @@ const BlogSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y subtítulo */}
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
-          <div className="flex items-center justify-center gap-6 mb-6 w-full px-4 py-2 overflow-visible">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6 w-full px-4 py-2 overflow-visible">
             <SectionIcon icon={BookOpen} />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat whitespace-nowrap">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-montserrat sm:whitespace-nowrap text-center sm:text-left">
               Tips para tus viajes
             </h2>
           </div>

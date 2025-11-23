@@ -170,8 +170,8 @@ const Home = () => {
         </div>
 
         {/* Badge del destino en la esquina inferior derecha */}
-        <div className="absolute bottom-6 right-6 z-20">
-          <div className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-lg text-white text-sm font-semibold border border-white/20 shadow-lg transition-all duration-500">
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20">
+          <div className="px-3 py-1.5 sm:px-4 sm:py-2 bg-black/60 backdrop-blur-md rounded-lg text-white text-xs sm:text-sm font-semibold border border-white/20 shadow-lg transition-all duration-500">
             {heroImages[currentHeroIndex].destination}
           </div>
         </div>
@@ -180,13 +180,13 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/50" />
 
         {/* Contenido del Hero */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Columna izquierda - Contenido */}
             <div className="text-white">
               {/* Badge - Staging: Aparece primero */}
               <div
-                className={`inline-block px-4 py-2 bg-black/40 backdrop-blur-sm rounded-lg mb-6 text-sm font-medium transition-all ${
+                className={`inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-black/40 backdrop-blur-sm rounded-lg mb-4 sm:mb-6 text-xs sm:text-sm font-medium transition-all ${
                   isVisible ? "animate-fade-in-down opacity-100" : "opacity-0"
                 }`}
                 style={{ animationDelay: "0ms" }}
@@ -196,7 +196,7 @@ const Home = () => {
 
               {/* Título principal - Staging: Aparece segundo */}
               <h1
-                className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 font-montserrat leading-tight transition-all ${
+                className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 font-montserrat leading-tight transition-all ${
                   isVisible ? "animate-fade-in-up opacity-100" : "opacity-0"
                 }`}
                 style={{ animationDelay: "200ms" }}
@@ -206,7 +206,7 @@ const Home = () => {
 
               {/* Subtítulo - Staging: Aparece tercero */}
               <p
-                className={`text-lg sm:text-xl text-white/90 mb-8 leading-relaxed max-w-xl transition-all ${
+                className={`text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-xl transition-all ${
                   isVisible ? "animate-fade-in-up opacity-100" : "opacity-0"
                 }`}
                 style={{ animationDelay: "400ms" }}
@@ -218,16 +218,16 @@ const Home = () => {
 
               {/* Social Proof - Staging: Aparece cuarto */}
               <div
-                className={`mt-12 space-y-4 transition-all ${
+                className={`mt-6 sm:mt-8 lg:mt-12 space-y-3 sm:space-y-4 transition-all ${
                   isVisible ? "animate-fade-in-up opacity-100" : "opacity-0"
                 }`}
                 style={{ animationDelay: "600ms" }}
               >
-                <div className="flex items-center gap-3 flex-wrap">
-                  <span className="text-white/90 text-sm">
+                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                  <span className="text-white/90 text-xs sm:text-sm">
                     Nos recomiendan:
                   </span>
-                  <div className="flex -space-x-2">
+                  <div className="flex -space-x-1.5 sm:-space-x-2">
                     {["María García", "Carlos Rodríguez", "Ana Martínez"].map(
                       (name, i) => {
                         // Obtener las iniciales del nombre
@@ -252,7 +252,7 @@ const Home = () => {
                       href="https://www.google.com/maps/place/?q=HereYouTravel+Miami"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-gray-500/50 border-2 border-white/30 backdrop-blur-sm flex items-center justify-center hover:bg-gray-500/70 hover:scale-110 transition-all cursor-pointer group"
+                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-500/50 border-2 border-white/30 backdrop-blur-sm flex items-center justify-center hover:bg-gray-500/70 hover:scale-110 transition-all cursor-pointer group"
                       aria-label="Añadir reseña en Google Maps"
                       style={{
                         animationDelay: "1100ms",
@@ -268,16 +268,16 @@ const Home = () => {
                       </span>
                     </a>
                   </div>
-                  <span className="text-white/90 text-sm ml-2">
+                  <span className="text-white/90 text-xs sm:text-sm ml-1 sm:ml-2">
                     100+ Destinos turísticos
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="flex gap-0.5 sm:gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400 hover:scale-125 transition-transform"
+                        className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400 hover:scale-125 transition-transform"
                         style={{
                           animationDelay: `${1200 + i * 100}ms`,
                           transitionDuration: "var(--timing-fast)",
@@ -289,7 +289,7 @@ const Home = () => {
                       />
                     ))}
                   </div>
-                  <span className="text-white/90 text-sm">
+                  <span className="text-white/90 text-xs sm:text-sm">
                     (4,6) Reseñas positivas
                   </span>
                 </div>
@@ -303,54 +303,86 @@ const Home = () => {
               }`}
               style={{ animationDelay: "800ms" }}
             >
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-2xl">
-                <form className="space-y-4">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-2xl">
+                <form className="space-y-3 sm:space-y-4">
                   {/* Campo Destinos */}
                   <div className="relative">
-                    <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <select className="w-full pl-12 pr-10 py-4 bg-white border border-gray-200 rounded-xl text-gray-700 font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 cursor-pointer hover:border-gray-300 transition-colors">
-                      <option>Destinos</option>
-                      <option>París, Francia</option>
-                      <option>Tokio, Japón</option>
-                      <option>Nueva York, USA</option>
-                      <option>Barcelona, España</option>
-                      <option>Bali, Indonesia</option>
+                    <MapPin className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+                    <select className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all">
+                      <option className="bg-gray-800 text-white">
+                        Destinos
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        París, Francia
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        Tokio, Japón
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        Nueva York, USA
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        Barcelona, España
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        Bali, Indonesia
+                      </option>
                     </select>
-                    <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70 pointer-events-none" />
                   </div>
 
                   {/* Campo Precio */}
                   <div className="relative">
-                    <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <select className="w-full pl-12 pr-10 py-4 bg-white border border-gray-200 rounded-xl text-gray-700 font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 cursor-pointer hover:border-gray-300 transition-colors">
-                      <option>$800 - $4,899</option>
-                      <option>$500 - $1,000</option>
-                      <option>$1,000 - $2,500</option>
-                      <option>$2,500 - $5,000</option>
-                      <option>$5,000+</option>
+                    <DollarSign className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+                    <select className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all">
+                      <option className="bg-gray-800 text-white">
+                        $800 - $4,899
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        $500 - $1,000
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        $1,000 - $2,500
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        $2,500 - $5,000
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        $5,000+
+                      </option>
                     </select>
-                    <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70 pointer-events-none" />
                   </div>
 
                   {/* Campo Duración */}
                   <div className="relative">
-                    <Clock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <select className="w-full pl-12 pr-10 py-4 bg-white border border-gray-200 rounded-xl text-gray-700 font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 cursor-pointer hover:border-gray-300 transition-colors">
-                      <option>0 Días - 15 Días</option>
-                      <option>1-3 Días</option>
-                      <option>4-7 Días</option>
-                      <option>8-15 Días</option>
-                      <option>16+ Días</option>
+                    <Clock className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+                    <select className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all">
+                      <option className="bg-gray-800 text-white">
+                        0 Días - 15 Días
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        1-3 Días
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        4-7 Días
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        8-15 Días
+                      </option>
+                      <option className="bg-gray-800 text-white">
+                        16+ Días
+                      </option>
                     </select>
-                    <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-white/70 pointer-events-none" />
                   </div>
 
                   {/* Botón Buscar */}
                   <button
                     type="submit"
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full bg-red-600/90 backdrop-blur-sm hover:bg-red-700 text-white font-semibold py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base border border-red-500/30 hover:border-red-400/50"
                   >
-                    <Search className="w-5 h-5" />
+                    <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                     Buscar
                   </button>
                 </form>
