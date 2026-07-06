@@ -39,11 +39,13 @@ const BlogImagePlaceholder = ({ destination }: { destination: string }) => (
 
 // Card de blog
 const BlogCard = ({
+  slug,
   destination,
   title,
   description,
   image,
 }: {
+  slug: string;
   destination: string;
   title: string;
   description: string;
@@ -83,7 +85,7 @@ const BlogCard = ({
 
         {/* Botón VER MÁS */}
         <Link
-          to={`/blog/${destination.toLowerCase()}`}
+          to={`/blog/${slug}`}
           className="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-center"
         >
           VER MÁS
@@ -127,6 +129,7 @@ const BlogSection = () => {
           {blogPosts.map((post, index) => (
             <BlogCard
               key={index}
+              slug={post.slug}
               destination={post.destination}
               title={post.title}
               description={post.description}

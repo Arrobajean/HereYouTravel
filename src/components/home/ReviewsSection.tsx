@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Star,
   ChevronLeft,
@@ -6,7 +7,6 @@ import {
   Info,
   MessageCircle,
 } from "lucide-react";
-import { useState } from "react";
 import { useCarousel } from "@/hooks/landing/useCarousel";
 import { reviews } from "@/data/landing/reviews";
 import type { Review } from "@/data/landing/reviews";
@@ -28,8 +28,13 @@ const ReviewCard = ({
       {/* Header simplificado */}
       <div className="flex items-center gap-2 mb-3">
         {hasAvatar ? (
-          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0">
-            <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500"></div>
+          <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+            <div
+              className="w-full h-full flex items-center justify-center text-white font-semibold text-xs"
+              style={{ backgroundColor: avatarColor || "#dc2626" }}
+            >
+              {reviewerName.charAt(0).toUpperCase()}
+            </div>
           </div>
         ) : (
           <div

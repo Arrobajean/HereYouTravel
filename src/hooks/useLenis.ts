@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
+// Global Lenis instance so useScrollToTop can access it
+export let lenisInstance: Lenis | null = null;
+
 export const useLenis = () => {
   useEffect(() => {
     // Solo inicializar Lenis en escritorio (pantallas >= 768px)
@@ -24,6 +27,8 @@ export const useLenis = () => {
       infinite: false,
     });
 
+    lenisInstance = lenis;
+
     // Agregar clase al HTML
     document.documentElement.classList.add("lenis", "lenis-smooth");
 
@@ -38,8 +43,8 @@ export const useLenis = () => {
     // Limpiar al desmontar
     return () => {
       lenis.destroy();
+      lenisInstance = null;
       document.documentElement.classList.remove("lenis", "lenis-smooth");
     };
   }, []);
 };
-

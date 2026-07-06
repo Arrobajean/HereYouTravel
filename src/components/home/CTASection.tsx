@@ -11,9 +11,15 @@ const CTASection = () => {
       ref={sectionRef}
       className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-blue-300 to-indigo-300">
-        {/* Placeholder para el background que el usuario agregará */}
+      {/* Background — foto de destino con overlay, igual que el hero */}
+      <div className="absolute inset-0">
+        <img
+          src="/assets/landing/turquia-hero.webp"
+          alt="Destino de viaje"
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       {/* Overlay oscuro para mejorar legibilidad */}

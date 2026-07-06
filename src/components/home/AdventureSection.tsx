@@ -1,7 +1,9 @@
-import { Compass } from "lucide-react";
+import { Compass, Star } from "lucide-react";
 import CTAButton from "@/components/ui/cta-button";
 import { scrollToSection } from "@/hooks/landing/useTabNavigation";
 import SectionIcon from "@/components/ui/section-icon";
+import { AvatarGroup, AvatarGroupItem } from "@/components/ui/avatar-group";
+import { reviews } from "@/data/landing/reviews";
 
 interface AdventureSectionProps {
   activeTab?: "destinos" | "servicios";
@@ -37,6 +39,45 @@ const AdventureSection = ({
           <CTAButton to="/contacto" variant="white" size="lg" uppercase>
             COTIZA TU VIAJE AHORA
           </CTAButton>
+
+          {/* Social Proof - Avatar Group */}
+          <div className="mt-12 flex flex-col items-center gap-4">
+            <div className="flex items-center gap-2">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                  />
+                ))}
+              </div>
+              <span className="text-white text-sm font-medium">
+                4.9 de 88 reseñas
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <AvatarGroup className="justify-center">
+                {reviews.slice(0, 5).map((review, index) => (
+                  <AvatarGroupItem
+                    key={index}
+                    fallback={review.reviewerName.charAt(0)}
+                    className="border-2 border-white"
+                    style={{
+                      backgroundColor: review.avatarColor,
+                    }}
+                  />
+                ))}
+                <AvatarGroupItem
+                  href="#reviews"
+                  fallback="+"
+                  className="border-2 border-white bg-red-600 hover:bg-red-700 cursor-pointer"
+                />
+              </AvatarGroup>
+              <span className="text-white/90 text-sm">
+                Únete a más de 1,000 viajeros felices
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 

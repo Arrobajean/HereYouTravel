@@ -51,16 +51,6 @@ const StatItem = ({ value, label, prefix = "+" }: Stat) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasStarted]);
 
-  const [showSparkle, setShowSparkle] = useState(false);
-
-  useEffect(() => {
-    if (hasStarted && count === value) {
-      setShowSparkle(true);
-      const timer = setTimeout(() => setShowSparkle(false), 600);
-      return () => clearTimeout(timer);
-    }
-  }, [count, value, hasStarted]);
-
   return (
     <div ref={ref} className="text-center relative">
       <div
@@ -72,11 +62,6 @@ const StatItem = ({ value, label, prefix = "+" }: Stat) => {
       >
         {prefix}
         {count}
-        {showSparkle && (
-          <span className="absolute -top-2 -right-2 text-yellow-400 animate-sparkle">
-            ✨
-          </span>
-        )}
       </div>
       <div
         className="text-xs sm:text-lg lg:text-xl text-gray-800 font-medium transition-all leading-tight sm:leading-normal"

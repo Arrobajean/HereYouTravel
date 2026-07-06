@@ -19,12 +19,16 @@ const Home = lazy(() => import("@/pages/site/home/pages/Home"));
 const AboutUs = lazy(() => import("@/pages/site/about/pages/AboutUs"));
 const Destinations = lazy(() => import("@/pages/site/destinations/pages/Destinations"));
 const DestinationDetail = lazy(() => import("@/pages/site/destinations/pages/DestinationDetail"));
+const Experiences = lazy(() => import("@/pages/site/experiences/pages/Experiences"));
+const ExperienceDetail = lazy(() => import("@/pages/site/experiences/pages/ExperienceDetail"));
 const Packages = lazy(() => import("@/pages/site/packages/pages/Packages"));
 const Contact = lazy(() => import("@/pages/site/contact/pages/Contact"));
 const LegalNotice = lazy(() => import("./pages/legal/LegalNotice"));
 const PrivacyPolicy = lazy(() => import("./pages/legal/PrivacyPolicy"));
 const CookiesPolicy = lazy(() => import("./pages/legal/CookiesPolicy"));
 const NotFound = lazy(() => import("@/pages/site/not-found/pages/NotFound"));
+const Blog = lazy(() => import("@/pages/site/blog/pages/Blog"));
+const BlogPost = lazy(() => import("@/pages/site/blog/pages/BlogPost"));
 
 // Componentes memoizados con comparación personalizada para evitar re-renders
 const MemoizedNavigation = memo(Navigation, () => true);
@@ -90,8 +94,12 @@ const router = createBrowserRouter([
       { path: "nosotros", element: <AboutUs /> },
       { path: "destinos", element: <Destinations /> },
       { path: "destinos/:slug", element: <DestinationDetail /> },
+      { path: "experiencias", element: <Experiences /> },
+      { path: "experiencias/:slug", element: <ExperienceDetail /> },
       { path: "paquetes", element: <Packages /> },
       { path: "contacto", element: <Contact /> },
+      { path: "blog", element: <Blog /> },
+      { path: "blog/:slug", element: <BlogPost /> },
       { path: "aviso-legal", element: <LegalNotice /> },
       { path: "politica-privacidad", element: <PrivacyPolicy /> },
       { path: "politica-cookies", element: <CookiesPolicy /> },

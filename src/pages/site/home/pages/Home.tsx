@@ -1,63 +1,47 @@
 import { useState, lazy, Suspense, useEffect, useRef } from "react";
 
-// Componente de avatar con fallback
-const AvatarWithFallback = ({
+// Avatar local de iniciales — sin dependencias externas
+const InitialsAvatar = ({
   name,
-  initials,
   index,
   isVisible,
   animationDelay,
 }: {
   name: string;
-  initials: string;
   index: number;
   isVisible: boolean;
   animationDelay: number;
 }) => {
-  const [imgError, setImgError] = useState(false);
-  const avatarUrl = `https://avatar-placeholder.iran.liara.run/?text=${encodeURIComponent(
-    initials
-  )}`;
-  const bgColor = `hsl(${(index * 137.5) % 360}, 70%, 50%)`;
-
-  if (imgError) {
-    return (
-      <div
-        className="w-10 h-10 rounded-full border-2 border-white/30 backdrop-blur-sm hover:scale-110 transition-transform flex items-center justify-center text-white text-sm font-bold"
-        style={{
-          backgroundColor: bgColor,
-          animationDelay: `${animationDelay}ms`,
-          transitionDuration: "var(--timing-fast)",
-          transitionTimingFunction: "var(--ease-out)",
-          animation: isVisible
-            ? "fade-in-scale 500ms cubic-bezier(0.16, 1, 0.3, 1) backwards"
-            : "none",
-        }}
-      >
-        {initials}
-      </div>
-    );
-  }
+  // Paleta de marca: variaciones del rojo y terracota
+  const brandColors = [
+    "#b91c1c", // red-700
+    "#dc2626", // red-600
+    "#c2410c", // orange-700
+  ];
+  const bgColor = brandColors[index % brandColors.length];
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
 
   return (
-    <img
-      src={avatarUrl}
-      alt={name}
-      className="w-10 h-10 rounded-full border-2 border-white/30 backdrop-blur-sm hover:scale-110 transition-transform object-cover"
+    <div
+      className="w-10 h-10 rounded-full border-2 border-white/30 backdrop-blur-sm hover:scale-110 flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
       style={{
+        backgroundColor: bgColor,
         animationDelay: `${animationDelay}ms`,
-        transitionDuration: "var(--timing-fast)",
-        transitionTimingFunction: "var(--ease-out)",
+        transition: "transform var(--timing-fast) var(--ease-out)",
         animation: isVisible
           ? "fade-in-scale 500ms cubic-bezier(0.16, 1, 0.3, 1) backwards"
           : "none",
       }}
-      width={40}
-      height={40}
-      loading="lazy"
-      decoding="async"
-      onError={() => setImgError(true)}
-    />
+      aria-label={name}
+      title={name}
+    >
+      {initials}
+    </div>
   );
 };
 import {
@@ -68,6 +52,7 @@ import {
   ChevronDown,
   Star,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import DiscoverSection from "@/components/home/DiscoverSection";
 import AdventureSection from "@/components/home/AdventureSection";
 import PackagesSection from "@/components/home/PackagesSection";
@@ -124,6 +109,10 @@ const heroImages = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [searchDestino, setSearchDestino] = useState("");
+  const [searchPrecio, setSearchPrecio] = useState("");
+  const [searchDuracion, setSearchDuracion] = useState("");
   const [activeTab, setActiveTab] = useState<"destinos" | "servicios">(
     "destinos"
   );
@@ -228,19 +217,12 @@ const Home = () => {
                     Nos recomiendan:
                   </span>
                   <div className="flex -space-x-1.5 sm:-space-x-2">
-                    {["María García", "Carlos Rodríguez", "Ana Martínez"].map(
+                    {["Fanny B", "Gielen V", "Madeleyne C"].map(
                       (name, i) => {
-                        // Obtener las iniciales del nombre
-                        const initials = name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")
-                          .toUpperCase();
                         return (
-                          <AvatarWithFallback
+                          <InitialsAvatar
                             key={i}
                             name={name}
-                            initials={initials}
                             index={i}
                             isVisible={isVisible}
                             animationDelay={800 + i * 100}
@@ -304,29 +286,32 @@ const Home = () => {
               style={{ animationDelay: "800ms" }}
             >
               <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl max-w-md mx-auto lg:mx-0">
-                <form className="space-y-2.5 sm:space-y-3">
+                <form
+                  className="space-y-2.5 sm:space-y-3"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const params = new URLSearchParams();
+                    if (searchDestino) params.set("destino", searchDestino);
+                    if (searchPrecio) params.set("precio", searchPrecio);
+                    if (searchDuracion) params.set("duracion", searchDuracion);
+                    navigate(`/destinos${params.toString() ? `?${params.toString()}` : ""}`);
+                  }}
+                >
                   {/* Campo Destinos */}
                   <div className="relative group">
                     <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 group-hover:text-white/90 transition-colors pointer-events-none z-10" />
-                    <select className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all">
-                      <option value="" className="text-white">
-                        Destinos
-                      </option>
-                      <option value="paris" className="text-white">
-                        París, Francia
-                      </option>
-                      <option value="tokio" className="text-white">
-                        Tokio, Japón
-                      </option>
-                      <option value="nueva-york" className="text-white">
-                        Nueva York, USA
-                      </option>
-                      <option value="barcelona" className="text-white">
-                        Barcelona, España
-                      </option>
-                      <option value="bali" className="text-white">
-                        Bali, Indonesia
-                      </option>
+                    <select
+                      className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all"
+                      value={searchDestino}
+                      onChange={(e) => setSearchDestino(e.target.value)}
+                    >
+                      <option value="">Destino</option>
+                      <option value="japon">Japón</option>
+                      <option value="peru">Perú</option>
+                      <option value="tailandia">Tailandia</option>
+                      <option value="republica-dominicana">República Dominicana</option>
+                      <option value="turquia">Turquía</option>
+                      <option value="egipto">Egipto</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none group-hover:text-white/90 transition-colors" />
                   </div>
@@ -334,22 +319,16 @@ const Home = () => {
                   {/* Campo Precio */}
                   <div className="relative group">
                     <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 group-hover:text-white/90 transition-colors pointer-events-none z-10" />
-                    <select className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all">
-                      <option value="" className="text-white">
-                        $800 - $4,899
-                      </option>
-                      <option value="500-1000" className="text-white">
-                        $500 - $1,000
-                      </option>
-                      <option value="1000-2500" className="text-white">
-                        $1,000 - $2,500
-                      </option>
-                      <option value="2500-5000" className="text-white">
-                        $2,500 - $5,000
-                      </option>
-                      <option value="5000+" className="text-white">
-                        $5,000+
-                      </option>
+                    <select
+                      className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all"
+                      value={searchPrecio}
+                      onChange={(e) => setSearchPrecio(e.target.value)}
+                    >
+                      <option value="">$800 - $4,899</option>
+                      <option value="500-1000">$500 - $1,000</option>
+                      <option value="1000-2500">$1,000 - $2,500</option>
+                      <option value="2500-5000">$2,500 - $5,000</option>
+                      <option value="5000+">$5,000+</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none group-hover:text-white/90 transition-colors" />
                   </div>
@@ -357,22 +336,16 @@ const Home = () => {
                   {/* Campo Duración */}
                   <div className="relative group">
                     <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 group-hover:text-white/90 transition-colors pointer-events-none z-10" />
-                    <select className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all">
-                      <option value="" className="text-white">
-                        0 Días - 15 Días
-                      </option>
-                      <option value="1-3" className="text-white">
-                        1-3 Días
-                      </option>
-                      <option value="4-7" className="text-white">
-                        4-7 Días
-                      </option>
-                      <option value="8-15" className="text-white">
-                        8-15 Días
-                      </option>
-                      <option value="16+" className="text-white">
-                        16+ Días
-                      </option>
+                    <select
+                      className="glass-select w-full pl-9 pr-8 py-2.5 rounded-lg text-sm font-medium appearance-none focus:outline-none cursor-pointer transition-all"
+                      value={searchDuracion}
+                      onChange={(e) => setSearchDuracion(e.target.value)}
+                    >
+                      <option value="">0 Días - 15 Días</option>
+                      <option value="1-3">1-3 Días</option>
+                      <option value="4-7">4-7 Días</option>
+                      <option value="8-15">8-15 Días</option>
+                      <option value="16+">16+ Días</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none group-hover:text-white/90 transition-colors" />
                   </div>

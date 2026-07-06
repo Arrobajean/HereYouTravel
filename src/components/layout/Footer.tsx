@@ -262,12 +262,12 @@ const Footer = () => {
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/20">
           <div className="flex flex-col items-center gap-2 sm:gap-3">
             <p className="text-xs sm:text-sm text-white/90 text-center">
-              © 2025. Todos los derechos reservados.
+              © {new Date().getFullYear()}. Todos los derechos reservados.
             </p>
             <p className="text-xs sm:text-sm text-white/70 text-center">
               Sitio desarrollado por{" "}
               <LinkPreview
-                url="https://www.404studios.digital"
+                url="https://www.404studios.es"
                 isStatic={true}
                 imageSrc="/assets/images/404studios artwork.jpg"
                 className="text-white hover:text-white/80 transition-colors underline focus:outline-none rounded"
