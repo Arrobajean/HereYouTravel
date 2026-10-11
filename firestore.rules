@@ -1,0 +1,33 @@
+rules_version = '2';
+
+// ============================================================================
+// Reglas de seguridad de Firestore — HereYouTravel
+//
+// Hoy NINGUN punto del cliente escribe en Firestore (src/lib/firebase.ts
+// inicializa Firestore pero no hay addDoc/setDoc en src). Por eso, por
+// defecto TODO denegado salvo admin (custom claim `admin: true`).
+// Si algun dia un formulario guarda leads, anadir aqui SOLO `create`
+// validado (ver modelo en easywood/firestore.rules) y NUNCA `if true`.
+//
+// Desplegar con: firebase deploy --only firestore:rules --project <id>
+// ============================================================================
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    match /contactos/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    match /contacto_envios/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
