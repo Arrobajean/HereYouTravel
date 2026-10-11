@@ -1,71 +1,55 @@
-# HereYouTravel - Agencia de Viajes
+# HereYouTravel — Agencia de viajes
 
-Vite + React + TypeScript · Tailwind CSS · Firebase (Firestore + Functions) · Vercel
+Sitio corporativo de HereYouTravel (agencia de viajes, Miami) con catalogo de destinos, experiencias, paquetes y blog.
 
-## 🚀 Descripción
+## Que demuestra
 
-Este repositorio contiene el código del sitio web corporativo de HereYouTravel, una agencia de viajes especializada en crear experiencias únicas. Está construido con Vite + React + TypeScript, estilos con Tailwind CSS, SEO con `react-helmet-async` y persistencia de leads en Firebase/Firestore.
+- SPA con catalogo (destinos, experiencias, paquetes, detalle por slug) y blog.
+- Code splitting con `React.lazy` + `Suspense` y scroll suave con Lenis.
+- SEO por pagina (react-helmet-async, sitemap, robots, schema.org).
+- Persistencia preparada en Firestore (`src/lib/firebase.ts`).
 
-## 📦 Tecnologías principales
+## Stack
 
-- Vite, React 18, TypeScript
-- Tailwind CSS y componentes basados en Radix UI
-- React Router, Framer Motion, GSAP, Lenis
-- SEO con `react-helmet-async`
-- Firebase (Firestore, opcionalmente Functions y Admin)
-- Vercel (hosting recomendado)
+Vite, React 18, TypeScript, Tailwind CSS + Radix UI, react-router-dom, Framer Motion, GSAP, Lenis, Firebase (Firestore), Vercel.
 
-## ✅ Requisitos previos
+## Demo
 
-- Node.js 18+
-- npm 9+ (o pnpm/yarn)
-- Cuenta de Firebase (para Firestore y/o Functions)
-- Cuenta en Vercel (para despliegue)
+https://hereyoutravel.com — sitio de produccion del mismo negocio (telefono y marca coinciden con este codigo); puede diferir de esta build del repo.
 
-## 🔧 Instalación y uso
-
-1. Instala dependencias
+## Como ejecutarlo
 
 ```bash
 npm install
+cp .env.example .env   # completar los valores reales (ver .env.example)
+npm run dev            # desarrollo local
+npm run build          # build de produccion en dist/
+npm run preview        # servir la build localmente
+npm run lint           # ESLint
 ```
 
-2. Variables de entorno
+Despliegue en Vercel: Framework Preset Vite, Build Command `npm run build`, Output `dist`, con las variables de `.env.example` configuradas en el proyecto.
 
-Crea un archivo `.env` en la raíz con:
+## Tests
 
-```env
-VITE_FIREBASE_API_KEY=...
-VITE_FIREBASE_AUTH_DOMAIN=...
-VITE_FIREBASE_PROJECT_ID=...
-VITE_FIREBASE_STORAGE_BUCKET=...
-VITE_FIREBASE_MESSAGING_SENDER_ID=...
-VITE_FIREBASE_APP_ID=...
-VITE_FIREBASE_MEASUREMENT_ID=...
-```
+Sin tests automatizados. Verificacion actual: `npm run build` y `npm run lint`.
 
-3. Desarrollo local
+## Decisiones
 
-```bash
-npm run dev
-```
+- SPA con react-router-dom y rewrites a `/index.html` en `vercel.json`.
+- Paginas con `React.lazy` para dividir el bundle por ruta.
+- Firebase via `import.meta.env.VITE_FIREBASE_*`, sin claves en el codigo.
 
-4. Build y preview
+## Limitaciones honestas
 
-```bash
-npm run build
-npm run preview
-```
+- Sin tests automatizados.
+- El formulario de contacto (`useContactForm`) es un stub solo-frontend: hace `console.log` con un `TODO` pendiente, no envia a ningun backend, no tiene honeypot y no usa EmailJS (la dependencia `emailjs-com` esta declarada pero sin cablear).
+- El script `build` es solo `vite build` (sin typecheck).
 
-## 🧩 Scripts disponibles
+## Como se construyo
 
-- `npm run dev`: inicia el entorno de desarrollo con Vite.
-- `npm run build`: genera la build de producción en `dist/`.
-- `npm run build:dev`: build en modo desarrollo (útil para validaciones rápidas).
-- `npm run preview`: sirve la build de producción localmente.
-- `npm run lint`: ejecuta ESLint.
+Con honestidad: el propio README anterior indicaba que el proyecto parte de la estructura de psicosagra, el historial arranca con `Initial commit: HereYouTravel website`, y `lovable-tagger` sigue en devDependencies (base generada con Lovable/similar). Trabajo propio posterior: adaptacion completa a agencia de viajes (destinos, experiencias, paquetes, blog, lazy loading, sitemap/schema y optimizaciones movil).
 
-## 📝 Notas
+## Licencia
 
-Este proyecto está basado en la estructura optimizada del proyecto psicosagra y adaptado para una agencia de viajes.
-
+MIT — ver `LICENSE`.
