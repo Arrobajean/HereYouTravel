@@ -48,7 +48,7 @@ Sin tests automatizados. Verificacion actual: `npm run build` y `npm run lint`.
 
 ## Como se construyo
 
-Con honestidad: el propio README anterior indicaba que el proyecto parte de la estructura de psicosagra, el historial arranca con `Initial commit: HereYouTravel website`, y `lovable-tagger` sigue en devDependencies (base generada con Lovable/similar). Trabajo propio posterior: adaptacion completa a agencia de viajes (destinos, experiencias, paquetes, blog, lazy loading, sitemap/schema y optimizaciones movil).
+Con honestidad: el proyecto parte de la estructura de psicosagra y de una plantilla de arranque (starter Vite + React + shadcn/ui); el historial arranca con `Initial commit: HereYouTravel website`. Trabajo propio posterior: adaptacion completa a agencia de viajes (destinos, experiencias, paquetes, blog, lazy loading, sitemap/schema y optimizaciones movil).
 
 ## Licencia
 
